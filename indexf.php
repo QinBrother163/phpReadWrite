@@ -22,7 +22,8 @@ $mysql_password3 = 'toodo1815';
 $mysql_dataname3 = 'test';//记录写入状态的数据库
 
 $conn = mysqli_connect($mysql_server_name, $mysql_username, $mysql_password) or die("error Database link failure!!!");
-mysqli_query($conn,"set names 'UTF-8'");
+mysqli_query($conn,"set character set 'utf8'");//读库
+mysqli_query($conn,"set names 'utf8'");
 mysqli_select_db($conn,$mysql_dataname);
 
 date_default_timezone_set("Asia/Chongqing");
@@ -60,7 +61,8 @@ while (!feof($data)) {
     $line = fgets($data);
     $lines = join("','", explode('#', $line));
     $conn = mysqli_connect($mysql_server_name2, $mysql_username2, $mysql_password2) or die("error Database link failure!!!");
-    mysqli_query($conn,"set names 'UTF-8'");
+    mysqli_query($conn,"set character set 'utf8'");//读库
+    mysqli_query($conn,"set names 'utf8'");
     mysqli_select_db($conn,$mysql_dataname2);
 
     $createtable = "create table $table_time(id int(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,createDate datetime,devNO varchar(20),CARegionCode varchar(20),needCnfm int(4),price int(10),CPID int(10))";
@@ -73,7 +75,8 @@ while (!feof($data)) {
 fclose($data);
 
 $conn = mysqli_connect($mysql_server_name3, $mysql_username3, $mysql_password3) or die("error Database link failure!!!");
-mysqli_query($conn,"set names 'UTF-8'");
+mysqli_query($conn,"set character set 'utf8'");//读库
+mysqli_query($conn,"set names 'utf8'");
 mysqli_select_db($conn,$mysql_dataname3);
 
 date_default_timezone_set("Asia/Chongqing");
